@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\ClientType;
 use Illuminate\Http\Request;
 
 class ApiTestController extends Controller
@@ -11,7 +13,54 @@ class ApiTestController extends Controller
      */
     public function index()
     {
-        //
+
+        // $clientTypes = [
+        //     ['name' => 'Individual'],
+        //     ['name' => 'Business'],
+        //     ['name' => 'Government']
+        // ];
+
+        // foreach ($clientTypes as $clientType) {
+        //     $newClientType = new ClientType();
+        //     $newClientType->name = $clientType['name'];
+        //     $newClientType->save();
+        // }
+
+        //clientType olustur
+        $clientType = ClientType::create(['name' => 'Individual']);
+
+        //client olustur
+        $client = Client::create(
+            [
+                'name' => 'John',
+                'surname' => 'Doe',
+                'email' => 'johndoe@example.com',
+                'password' => 'secret',
+                'client_type_id' => $clientType->id
+            ],
+        );
+
+        return $client;
+       // return Client::all();
+
+
+
+        //property type olustur
+
+
+        //property olustur
+
+
+
+        //property image olustur
+
+
+
+        //feature olustur
+
+
+        //property feature olustur
+
     }
 
     /**
